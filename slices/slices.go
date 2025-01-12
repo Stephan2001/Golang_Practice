@@ -9,5 +9,16 @@ func SumArray(numbers []int) int {
 }
 
 func SumAll(numbersToSum ...[]int) []int {
-	return nil
+	var sums []int
+
+	for _, numbers := range numbersToSum {
+		if len(numbers) == 0 {
+			sums = append(sums, 0)
+		} else {
+			tail := numbers[1:]
+			sums = append(sums, SumArray(tail))
+		}
+	}
+
+	return sums
 }
